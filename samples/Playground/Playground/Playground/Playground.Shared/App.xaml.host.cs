@@ -155,12 +155,12 @@ public sealed partial class App : Application
 						new RouteMap("NavContent", View: views.FindByViewModel<NavContentViewModel>(),
 						Nested: new[]
 						{
-							new RouteMap("NavContentTabs", IsDefault:true,
-										Nested: new[]
-										{
+							//new RouteMap("NavContentTabs", IsDefault:true,
+							//			Nested: new[]
+							//			{
 											new RouteMap("Tab1", IsDefault:true),
 											new RouteMap("Tab2")
-										}),
+										//}),
 						}),
 						new RouteMap("NavContentSecond", View: views.FindByView<NavContentSecondPage>(), DependsOn:"NavContent")
 					}),

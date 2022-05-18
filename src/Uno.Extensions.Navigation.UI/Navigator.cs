@@ -1,4 +1,6 @@
-﻿namespace Uno.Extensions.Navigation;
+﻿using System.Linq;
+
+namespace Uno.Extensions.Navigation;
 
 public class Navigator : INavigator, IInstance<IServiceProvider>
 {
@@ -403,8 +405,8 @@ public class Navigator : INavigator, IInstance<IServiceProvider>
 			var internalRoute = route with { IsInternal = true };
 			return (from child in Region.Children
 					let nav = child.Navigator()
-					where nav?.CanNavigate(internalRoute) ?? false
-					select child).Any();
+					let canNavigate= nav?.CanNavigate(internalRoute) ?? false
+					select canNavigate).All(x=>x);
 		}
 
 		return true;
